@@ -101,12 +101,12 @@ const creeProduitSql = async(req,res)=>{
 }
 const getProduitSql =async(req,res)=>{
     const getQuery= await"SELECT * FROM `produit`"
-    const resultGet = query(getQuery)
+    const resultGet = await query(getQuery)
     res.json(resultGet)
 }
 const  getProduitByIdSql = async(req,res)=>{
     const {id}=req.params
-    const byIdQuery = await "SELECT * FROM `produit` WHERE `id` =? LIMIT 1 "
+    const byIdQuery = await "SELECT * FROM `produit` WHERE `label` =? LIMIT 1 "
     const isUserFound = await query(byIdQuery, [id]);
     res.json(isUserFound)
 
